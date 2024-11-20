@@ -9,7 +9,7 @@ body{
 #sidemenu{
     background-color: #3F2E3E;
     color: #ecf0f1;
-    width: 200px;
+    width: 400px;
     height: 100%;
     position: fixed;
     top: 0;
@@ -21,6 +21,9 @@ body{
 #content{
     margin-left: 200px;
     padding: 20px;
+    display : flex;
+    justify-content: center;
+    align-items: center;
     }
 #sidemenu a{
     padding: 6px 8px 6px 16px;
@@ -46,7 +49,9 @@ body{
 #grid{
 width: 800px;
 display: flex;
-flex-wrap: wrap;}
+flex-wrap: wrap;
+justify-content: center;
+}
 
 .student{
 margin: 10px;
