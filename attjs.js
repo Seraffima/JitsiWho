@@ -1,4 +1,25 @@
-import { classDang1, classDang2 } from './clases.js';
+import { classNames, StudentList } from './clases.js';
+
+// ClassManager to manage multiple classes
+class ClassManager {
+    constructor() {
+        this.classes = {};
+    }
+
+    async addClass(className) {
+        const classModule = await import(`./clases.js`);
+        this.classes[className] = classModule[className];
+    }
+
+    getClass(className) {
+        return this.classes[className];
+    }
+
+    getStudents(className) {
+        const classInstance = this.getClass(className);
+        return classInstance ? classInstance.getStudents() : [];
+    }
+}
 
 // Create student div
 function createStudentDiv(firstName, secondName, lastName, secondLastName, imageUrl, isPresent) {
@@ -39,17 +60,18 @@ function createStudentDiv(firstName, secondName, lastName, secondLastName, image
     return studentDiv;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     const grid = document.getElementById('grid');
     const presentStudents = new Set(JSON.parse(localStorage.getItem('presentStudents')));
     const className = localStorage.getItem('className');
-    let students = [];
+    const classManager = new ClassManager();
 
-    if (className === 'classDang1') {
-        students = classDang1.getStudents();
-    } else if (className === 'classDang2') {
-        students = classDang2.getStudents();
+    // Dynamically add classes to the manager
+    for (const name of classNames) {
+        await classManager.addClass(name);
     }
+
+    const students = classManager.getStudents(className);
 
     students.forEach(student => {
         const fullName = `${student.firstName} ${student.secondName} ${student.lastName} ${student.secondLastName}`.trim();

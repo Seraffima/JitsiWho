@@ -22,6 +22,7 @@ class StudentList {
         return this.students;
     }
 }
+var classNames = [];
 
 // Clase ejemplo
 var classDang1 = new StudentList("Danganronpa Trigger Happy Havoc");
@@ -40,6 +41,7 @@ classDang1.addStudent('Leon', '', 'Kuwata', '', './pictures/leon_kuwata.png');
 classDang1.addStudent('Chihiro', '', 'Fujisaki', '', './pictures/chihiro_fujisaki.png');
 classDang1.addStudent('Sayaka', '', 'Maizono', '', './pictures/sayaka_maizono.png');
 classDang1.addStudent('Junko', '', 'Enoshima', '', './pictures/junko_enoshima.png');
+classNames.push(classDang1);
 
 var classDang2 = new StudentList("Danganronpa 2 Goodbye Despair");
 classDang2.addStudent('Hajime', '', 'Hinata', '', './pictures/hajime_hinata.png');
@@ -57,5 +59,8 @@ classDang2.addStudent('Hiyoko', 'S', 'Saionji', 'Roblox', './pictures/hiyoko_sai
 classDang2.addStudent('Ibuki', '', 'Mioda', '', './pictures/ibuki_mioda.png');
 classDang2.addStudent('Nekomaru', '', 'Nidai', '', './pictures/nekomaru_nidai.png');
 classDang2.addStudent('Mikan', '', 'Tsumiki', '', './pictures/mikan_tsumiki.png');
+classNames.push(classDang2);
 
-export { classDang1, classDang2, StudentList };
+
+export { classNames };
+export { StudentList };
